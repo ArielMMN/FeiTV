@@ -3,20 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/view/Alteracao.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/dao/AlunoDAO.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/controller/ControleLogin.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/view/Logado.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/view/Exclusao.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/view/Login.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/dao/Conexao.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/controller/ControleLogado.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/controller/ControleAlteracao.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/controller/ControleExclusao.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/model/Aluno.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/controller/ControleCadastro.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/exemplobd/ExemploBD.java</file>
-            <file>file:/C:/Users/gabri/OneDrive/Documentos/NetBeansProjects/ExemploBD/src/view/Cadastro.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/model/Curtida.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/model/Filme.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/model/ListaReproducao.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/model/Serie.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/model/Usuario.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/model/Video.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/dao/Conexao.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/NetBeansProjects/FeiTV/src/exemplobd/ExemploBD.java</file>
         </group>
     </open-files>
 </project-private>

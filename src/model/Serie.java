@@ -8,6 +8,15 @@ package model;
  *
  * @author ariel
  */
-public class Serie {
-    
+public class Serie extends Video {
+    private int temporadas;
+
+    public Serie(int idVideo, String titulo, String descricao, int anoLancamento, int temporadas) {
+        super(idVideo, titulo, descricao, "serie", anoLancamento);
+        this.temporadas = temporadas;
+    }
+
+    public int getTemporadas() { return temporadas; }
+    public void setTemporadas(int temporadas) { this.temporadas = temporadas; }
 }
+
