@@ -1,8 +1,8 @@
 package controller;
 
-import dao.AlunoDAO;
+import dao.UsuarioDAO;
 import dao.Conexao;
-import model.Aluno;
+import model.Usuario;
 import view.Cadastro;
 
 import java.sql.Connection;
@@ -16,22 +16,28 @@ public class ControleCadastro {
         this.tela3 = tela3;
     }
     
-    public void salvarAluno(){
+    public void salvarUsuario(){
+        // pega os dados da tela
         String nome = tela3.getTxtNome().getText();
-        String usuario = tela3.getTxtUsuario().getText();
+        String email = tela3.getTxtUsuario().getText(); // campo de login
         String senha = tela3.getTxtSenha().getText();
-        Aluno aluno = new Aluno(nome, usuario,senha);
+
+        // cria objeto Usuario (sem id, pois será gerado pelo banco)
+        Usuario usuario = new Usuario(nome, email, senha);
         
         Conexao conexao = new Conexao();
         try {
             Connection conn = conexao.getConnection();
-            AlunoDAO dao = new AlunoDAO(conn);
-            dao.inserir(aluno);
-            JOptionPane.showMessageDialog(tela3, "Usuario Cadastrado!","Aviso", 
-                                        JOptionPane.INFORMATION_MESSAGE);
+            UsuarioDAO dao = new UsuarioDAO(); // usa o DAO correto
+            dao.cadastrarUsuario(usuario); // método do DAO
+
+            JOptionPane.showMessageDialog(tela3, 
+                "Usuário cadastrado com sucesso!", 
+                "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(tela3, "Usuário não cadastrado!","Erro", 
-                                        JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(tela3, 
+                "Erro ao cadastrar usuário: " + ex.getMessage(), 
+                "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

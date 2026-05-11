@@ -40,5 +40,23 @@ public class UsuarioDAO {
         }
         return null;
     }
+    public void atualizar(Usuario usuario) throws SQLException {
+    String sql = "UPDATE usuario SET senha = ? WHERE id = ?";
+    try (Connection conn = conexao.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, usuario.getSenha());
+        stmt.setInt(2, usuario.getIdUsuario());
+        stmt.executeUpdate();
+    }
+}
+    public void remover(Usuario usuario) throws SQLException {
+    String sql = "DELETE FROM usuario WHERE id = ?";
+    try (Connection conn = conexao.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, usuario.getIdUsuario());
+        stmt.executeUpdate();
+    }
+}
+
 
 }

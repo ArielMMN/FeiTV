@@ -1,23 +1,22 @@
-
 package controller;
 
-import model.Aluno;
+import model.Usuario;
 import view.Logado;
 
 public class ControleLogado {
     private Logado tela4;
-    private Aluno aluno;
+    private Usuario usuario;
     
-    public ControleLogado(Logado tela4, Aluno aluno){
+    public ControleLogado(Logado tela4, Usuario usuario){
         this.tela4 = tela4;
-        this.aluno = aluno;
+        this.usuario = usuario;
     }
     
-    public Aluno chamarAlteracao(){
-        return aluno;
+    public Usuario chamarAlteracao(){
+        return usuario;
     }
     
-    public Aluno chamarExclusao(){
-        return aluno;
+    public Usuario chamarExclusao(){
+        return usuario;
     }
 }
