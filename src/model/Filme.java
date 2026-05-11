@@ -4,10 +4,6 @@
  */
 package model;
 
-/**
- *
- * @author ariel
- */
 public class Filme extends Video {
     private int duracao; // em minutos
 
@@ -18,4 +14,10 @@ public class Filme extends Video {
 
     public int getDuracao() { return duracao; }
     public void setDuracao(int duracao) { this.duracao = duracao; }
+
+    @Override
+    public void exibirInfo() {
+        System.out.println("Filme: " + getTitulo() + " (" + getAnoLancamento() + ") - Duração: " + duracao + " min");
+    }
 }
+

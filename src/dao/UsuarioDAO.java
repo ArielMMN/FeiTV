@@ -41,16 +41,4 @@ public class UsuarioDAO {
         return null;
     }
 
-    public List<Usuario> listarUsuarios() throws SQLException {
-        List<Usuario> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM usuario";
-        try (Connection conn = conexao.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                usuarios.add(new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("email"), rs.getString("senha")));
-            }
-        }
-        return usuarios;
-    }
 }

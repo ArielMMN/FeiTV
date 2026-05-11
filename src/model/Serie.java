@@ -4,10 +4,6 @@
  */
 package model;
 
-/**
- *
- * @author ariel
- */
 public class Serie extends Video {
     private int temporadas;
 
@@ -18,5 +14,10 @@ public class Serie extends Video {
 
     public int getTemporadas() { return temporadas; }
     public void setTemporadas(int temporadas) { this.temporadas = temporadas; }
+
+    @Override
+    public void exibirInfo() {
+        System.out.println("Série: " + getTitulo() + " (" + getAnoLancamento() + ") - Temporadas: " + temporadas);
+    }
 }
 

@@ -4,7 +4,7 @@ package view;
 import controller.ControleLogado;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import model.Aluno;
+import model.Usuario;
 
 public class Logado extends javax.swing.JFrame {
 
