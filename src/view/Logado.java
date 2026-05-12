@@ -8,10 +8,10 @@ import model.Usuario;
 
 public class Logado extends javax.swing.JFrame {
 
-    public Logado(Aluno aluno) {
+    public Logado(Usuario usuario) {
         initComponents();
-        lblBemVindo.setText((aluno.getNome()));
-        c = new ControleLogado(this, aluno);
+        lblBemVindo.setText((usuario.getNome()));
+        c = new ControleLogado(this, usuario);
     }
 
     public JButton getBtAlterar() {
@@ -136,14 +136,14 @@ public class Logado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
-        Aluno aluno = c.chamarAlteracao();
-        Alteracao alt = new Alteracao(aluno);
+        Usuario usuario = c.chamarAlteracao();
+        Alteracao alt = new Alteracao(usuario);
         alt.setVisible(true);
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        Aluno aluno = c.chamarExclusao();
-        Exclusao exc = new Exclusao(aluno);
+        Usuario usuario = c.chamarExclusao();
+        Exclusao exc = new Exclusao(usuario);
         exc.setVisible(true);
     }//GEN-LAST:event_btExcluirActionPerformed
 

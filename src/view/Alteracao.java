@@ -8,14 +8,14 @@ import controller.ControleAlteracao;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import model.Aluno;
+import model.Usuario;
 
 public class Alteracao extends javax.swing.JFrame {
 
-    public Alteracao(Aluno aluno) {
+    public Alteracao(Usuario usuario) {
         initComponents();
-        lblNome.setText((aluno.getNome()));
-        c = new ControleAlteracao(this, aluno);
+        lblNome.setText((usuario.getNome()));
+        c = new ControleAlteracao(this, usuario);
     }
 
     public JButton getBtSalvar() {

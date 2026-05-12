@@ -161,7 +161,7 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        c.salvarAluno();
+        c.salvarUsuario();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     /**

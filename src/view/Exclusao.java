@@ -8,14 +8,14 @@ import controller.ControleExclusao;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import model.Aluno;
+import model.Usuario;
 
 public class Exclusao extends javax.swing.JFrame {
 
-    public Exclusao(Aluno aluno) {
+    public Exclusao(Usuario usuario) {
         initComponents();
-        lblNome.setText((aluno.getNome()));
-        c = new ControleExclusao(this, aluno);
+        lblNome.setText((usuario.getNome()));
+        c = new ControleExclusao(this, usuario);
     }
 
     public JButton getBtExcluir() {
