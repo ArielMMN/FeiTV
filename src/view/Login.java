@@ -81,7 +81,7 @@ public class Login extends javax.swing.JFrame {
         btCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("AppAluno");
+        setTitle("FeiTv");
 
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUsuario.setText("Usuário:");
@@ -99,7 +99,6 @@ public class Login extends javax.swing.JFrame {
 
         btCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btCadastrar.setText("CADASTRAR");
-        btCadastrar.setActionCommand("CADASTRAR");
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
@@ -150,7 +149,7 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         c.loginUsuario();
     }//GEN-LAST:event_btEntrarActionPerformed
