@@ -8,14 +8,14 @@ package view;
  *
  * @author ariel
  */
-public class ListasReprodução extends javax.swing.JFrame {
+public class ListasReproducao extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListasReprodução.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListasReproducao.class.getName());
 
     /**
      * Creates new form ListasReprodução
      */
-    public ListasReprodução() {
+    public ListasReproducao() {
         initComponents();
     }
 
@@ -66,7 +66,7 @@ public class ListasReprodução extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ListasReprodução().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ListasReproducao().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

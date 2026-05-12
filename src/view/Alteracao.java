@@ -76,7 +76,7 @@ public class Alteracao extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("AppAluno");
+        setTitle("FeiTV");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblNome.setText("NOME");
