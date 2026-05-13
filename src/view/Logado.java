@@ -75,7 +75,7 @@ public class Logado extends javax.swing.JFrame {
         btSalvar.setText("SALVAR");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("AppAluno");
+        setTitle("FeiTV");
 
         lblBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblBemVindo.setText("NOME");

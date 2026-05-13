@@ -89,7 +89,7 @@ public class Exclusao extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("AppAluno");
+        setTitle("FeiTV");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblNome.setText("NOME");

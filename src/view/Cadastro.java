@@ -92,7 +92,7 @@ public class Cadastro extends javax.swing.JFrame {
         btSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("AppAluno");
+        setTitle("FeiTV");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNome.setText("Nome:");
