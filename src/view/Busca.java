@@ -35,13 +35,11 @@ public class Busca extends javax.swing.JFrame {
         lblTituloBusca = new javax.swing.JLabel();
         txtNomeVideo = new javax.swing.JTextField();
         btnBuscarVideo = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblResultados = new javax.swing.JTable();
-        btnCurtirVideo = new javax.swing.JButton();
-        btnDescurtirVideo = new javax.swing.JButton();
-        btnFavoritarVideo = new javax.swing.JButton();
+        btnDetalhes = new javax.swing.JButton();
         lblStatusBusca = new javax.swing.JLabel();
         btnVoltarPrincipal = new javax.swing.JButton();
+        tblResultados = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,6 +69,7 @@ public class Busca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblTituloBusca.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTituloBusca.setText("Buscar Videos");
 
         txtNomeVideo.setText("Digite o nome do  video");
@@ -78,7 +77,12 @@ public class Busca extends javax.swing.JFrame {
 
         btnBuscarVideo.setText("Buscar");
 
-        tblResultados.setModel(new javax.swing.table.DefaultTableModel(
+        btnDetalhes.setText("Ver Detalhes");
+
+        btnVoltarPrincipal.setText("Voltar");
+        btnVoltarPrincipal.addActionListener(this::btnVoltarPrincipalActionPerformed);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -89,45 +93,31 @@ public class Busca extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(tblResultados);
-
-        btnCurtirVideo.setText("Curtir");
-
-        btnDescurtirVideo.setText("Descurtir");
-
-        btnFavoritarVideo.setText("Favoritar");
-
-        btnVoltarPrincipal.setText("Voltar");
-        btnVoltarPrincipal.addActionListener(this::btnVoltarPrincipalActionPerformed);
+        tblResultados.setViewportView(jTable3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCurtirVideo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDescurtirVideo)
-                                .addGap(59, 59, 59)
-                                .addComponent(btnFavoritarVideo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVoltarPrincipal))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscarVideo)
-                                .addGap(125, 125, 125)
-                                .addComponent(lblStatusBusca))
-                            .addComponent(lblTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tblResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addComponent(btnDetalhes)
+                            .addGap(230, 230, 230)
+                            .addComponent(btnVoltarPrincipal))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnBuscarVideo)
+                                    .addGap(125, 125, 125)
+                                    .addComponent(lblStatusBusca))
+                                .addComponent(lblTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNomeVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,13 +130,11 @@ public class Busca extends javax.swing.JFrame {
                 .addComponent(lblStatusBusca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tblResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCurtirVideo)
-                    .addComponent(btnDescurtirVideo)
-                    .addComponent(btnFavoritarVideo)
+                    .addComponent(btnDetalhes)
                     .addComponent(btnVoltarPrincipal))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -189,18 +177,16 @@ public class Busca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarVideo;
-    private javax.swing.JButton btnCurtirVideo;
-    private javax.swing.JButton btnDescurtirVideo;
-    private javax.swing.JButton btnFavoritarVideo;
+    private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnVoltarPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JLabel lblStatusBusca;
     private javax.swing.JLabel lblTituloBusca;
-    private javax.swing.JTable tblResultados;
+    private javax.swing.JScrollPane tblResultados;
     private javax.swing.JTextField txtNomeVideo;
     // End of variables declaration//GEN-END:variables
 }
