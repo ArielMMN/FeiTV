@@ -3,22 +3,42 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
-/**
- *
- * @author ariel
- */
+ 
+import controller.ControleBusca;
+import model.Filme;
+import model.Serie;
+import model.Usuario;
+import model.Video;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+ 
 public class Busca extends javax.swing.JFrame {
-    
+ 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Busca.class.getName());
-
-    /**
-     * Creates new form Busca
-     */
+    private ControleBusca c;
+    private DefaultTableModel tableModel;
+    private List<Video> resultados;
+ 
     public Busca() {
         initComponents();
+        configurarTabela();
     }
-
+ 
+    public void setUsuario(Usuario usuario) {
+        c = new ControleBusca(this, usuario);
+    }
+ 
+    private void configurarTabela() {
+        tableModel = new DefaultTableModel(
+            new String[]{"Titulo", "Tipo", "Ano", "Detalhe"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int col) { return false; }
+        };
+        jTable3.setModel(tableModel);
+        jTable3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,6 +96,7 @@ public class Busca extends javax.swing.JFrame {
         txtNomeVideo.addActionListener(this::txtNomeVideoActionPerformed);
 
         btnBuscarVideo.setText("Buscar");
+        btnBuscarVideo.addActionListener(this::btnBuscarVideoActionPerformed);
 
         btnDetalhes.setText("Ver Detalhes");
 
@@ -143,22 +164,44 @@ public class Busca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeVideoActionPerformed
-        // TODO add your handling code here:
+         btnBuscarVideoActionPerformed(evt);
     }//GEN-LAST:event_txtNomeVideoActionPerformed
 
     private void btnVoltarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarPrincipalActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnVoltarPrincipalActionPerformed
+
+    private void btnBuscarVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVideoActionPerformed
+         String termo = txtNomeVideo.getText().trim();
+        if (termo.isEmpty() || termo.equals("Digite o nome do  video")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite um título para buscar.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        resultados = c.buscarVideos(termo);
+        tableModel.setRowCount(0);
+        lblStatusBusca.setText("");
+        if (resultados == null || resultados.isEmpty()) {
+            lblStatusBusca.setText("Nenhum resultado.");
+            return;
+        }
+        for (Video v : resultados) {
+            String detalhe;
+            if (v instanceof Filme) {
+                detalhe = ((Filme) v).getDuracao() + " min";
+            } else if (v instanceof Serie) {
+                detalhe = ((Serie) v).getTemporadas() + " temporadas";
+            } else {
+                detalhe = "-";
+            }
+            tableModel.addRow(new Object[]{v.getTitulo(), v.getTipo(), v.getAnoLancamento(), detalhe});
+        }
+        lblStatusBusca.setText(resultados.size() + " resultado(s).");
+    }//GEN-LAST:event_btnBuscarVideoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -169,9 +212,6 @@ public class Busca extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Busca().setVisible(true));
     }
 

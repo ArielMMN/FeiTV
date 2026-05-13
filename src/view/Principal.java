@@ -3,20 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
-/**
- *
- * @author ariel
- */
+ 
+import model.Usuario;
+ 
 public class Principal extends javax.swing.JFrame {
-    
+ 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-
-    /**
-     * Creates new form Principal
-     */
+    private Usuario usuario;
+ 
     public Principal() {
         initComponents();
+    }
+ 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        lblTitulo.setText("Bem-vindo, " + usuario.getNome() + "!");
+    }
+ 
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     /**
@@ -99,26 +104,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavoritosActionPerformed
-        new Favoritos().setVisible(true);
+        Favoritos fav = new Favoritos();
+        fav.setUsuario(usuario);
+        fav.setVisible(true);
     }//GEN-LAST:event_btnFavoritosActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        new Busca().setVisible(true);
+        Busca busca = new Busca();
+        busca.setUsuario(usuario);
+        busca.setVisible(true);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListasActionPerformed
-        new ListasReproducao().setVisible(true);
+        ListasReproducao listas = new ListasReproducao();
+        listas.setUsuario(usuario);
+        listas.setVisible(true);
     }//GEN-LAST:event_btnListasActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -129,10 +135,8 @@ public class Principal extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
