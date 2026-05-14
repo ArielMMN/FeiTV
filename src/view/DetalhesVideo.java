@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+ 
+import controller.ControleDetalhesVideo;
+import model.Filme;
+import model.ListaReproducao;
+import model.Serie;
+import model.Usuario;
+import model.Video;
+import java.util.List;
 
 /**
  *
@@ -12,11 +20,47 @@ public class DetalhesVideo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DetalhesVideo.class.getName());
 
-    /**
-     * Creates new form DetalhesVideo
-     */
+    private ControleDetalhesVideo c;
+    private Video video;
+    private Usuario usuario;
+ 
     public DetalhesVideo() {
         initComponents();
+    }
+ 
+    public void setVideo(Video video) {
+        this.video = video;
+        preencherDados();
+        verificarSetup();
+    }
+ 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        verificarSetup();
+    }
+ 
+    private void verificarSetup() {
+        if (video != null && usuario != null) {
+            c = new ControleDetalhesVideo(this, video, usuario);
+            btnCurtir.setText(c.isCurtido() ? "Descurtir" : "Curtir");
+            lblCurtidas.setText("Curtidas: " + c.contarCurtidas());
+        }
+    }
+ 
+    private void preencherDados() {
+        if (video == null) return;
+        lblTitulo.setText("Titulo: " + video.getTitulo());
+        lblTitulo2.setText("Tipo: " + video.getTipo());
+        lblAno.setText("Ano: " + video.getAnoLancamento());
+        txtDescricao.setText(video.getDescricao());
+        txtDescricao.setEditable(false);
+        txtDescricao.setLineWrap(true);
+        txtDescricao.setWrapStyleWord(true);
+        if (video instanceof Filme) {
+            lblDetalhe1.setText("Duracao: " + ((Filme) video).getDuracao() + " min");
+        } else if (video instanceof Serie) {
+            lblDetalhe1.setText("Temporadas: " + ((Serie) video).getTemporadas());
+        }
     }
 
     /**

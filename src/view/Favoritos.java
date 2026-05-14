@@ -3,6 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+ 
+import controller.ControleFavoritos;
+import model.Filme;
+import model.Serie;
+import model.Usuario;
+import model.Video;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
@@ -12,11 +21,43 @@ public class Favoritos extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Favoritos.class.getName());
 
-    /**
-     * Creates new form Favoritos
-     */
+    private ControleFavoritos c;
+    private DefaultTableModel tableModel;
+    private List<Video> videosFavoritos;
+ 
     public Favoritos() {
         initComponents();
+        configurarTabela();
+    }
+ 
+    public void setUsuario(Usuario usuario) {
+        c = new ControleFavoritos(this, usuario);
+        carregarDados();
+    }
+ 
+    private void configurarTabela() {
+        tableModel = new DefaultTableModel(
+            new String[]{"Titulo", "Tipo", "Ano", "Detalhe"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int col) { return false; }
+        };
+        tblFavoritos.setModel(tableModel);
+        tblFavoritos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+ 
+    private void carregarDados() {
+        videosFavoritos = c.carregarFavoritos();
+        tableModel.setRowCount(0);
+        if (videosFavoritos != null) {
+            for (Video v : videosFavoritos) {
+                String detalhe;
+                if (v instanceof Filme) detalhe = ((Filme) v).getDuracao() + " min";
+                else if (v instanceof Serie) detalhe = ((Serie) v).getTemporadas() + " temporadas";
+                else detalhe = "-";
+                tableModel.addRow(new Object[]{v.getTitulo(), v.getTipo(), v.getAnoLancamento(), detalhe});
+            }
+        }
     }
 
     /**
@@ -53,8 +94,10 @@ public class Favoritos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblFavoritos);
 
         btnDetalhes.setText("Ver detalhes");
+        btnDetalhes.addActionListener(this::btnDetalhesActionPerformed);
 
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(this::btnRemoverActionPerformed);
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(this::btnVoltarActionPerformed);
@@ -97,19 +140,36 @@ public class Favoritos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
+         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        int idx = tblFavoritos.getSelectedRow();
+        if (idx < 0 || videosFavoritos == null || idx >= videosFavoritos.size()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione um video.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        c.removerFavorito(videosFavoritos.get(idx).getIdVideo());
+        carregarDados();
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
+        int idx = tblFavoritos.getSelectedRow();
+        if (idx < 0 || videosFavoritos == null || idx >= videosFavoritos.size()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione um video.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        DetalhesVideo det = new DetalhesVideo();
+        det.setVideo(videosFavoritos.get(idx));
+        det.setUsuario(c.getUsuario());
+        det.setVisible(true);
+    }//GEN-LAST:event_btnDetalhesActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
+         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -119,9 +179,6 @@ public class Favoritos extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Favoritos().setVisible(true));
     }
 

@@ -3,6 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+ 
+import controller.ControleListasReproducao;
+import model.Filme;
+import model.ListaReproducao;
+import model.Serie;
+import model.Usuario;
+import model.Video;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
@@ -15,10 +25,66 @@ public class ListasReproducao extends javax.swing.JFrame {
     /**
      * Creates new form ListasReprodução
      */
+     private ControleListasReproducao c;
+    private DefaultTableModel modelListas;
+    private DefaultTableModel modelVideos;
+    private List<ListaReproducao> listas;
+    private List<Video> videosLista;
+ 
     public ListasReproducao() {
         initComponents();
+        configurarTabelas();
     }
-
+ 
+    public void setUsuario(Usuario usuario) {
+        c = new ControleListasReproducao(this, usuario);
+        carregarListas();
+    }
+ 
+    private void configurarTabelas() {
+        modelListas = new DefaultTableModel(new String[]{"Nome da Lista"}, 0) {
+            @Override public boolean isCellEditable(int r, int col) { return false; }
+        };
+        tblListas.setModel(modelListas);
+        tblListas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tblListas.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) carregarVideosDaLista();
+        });
+ 
+        modelVideos = new DefaultTableModel(new String[]{"Titulo", "Tipo", "Ano", "Detalhe"}, 0) {
+            @Override public boolean isCellEditable(int r, int col) { return false; }
+        };
+        tblVideos.setModel(modelVideos);
+        tblVideos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+ 
+    private void carregarListas() {
+        listas = c.carregarListas();
+        modelListas.setRowCount(0);
+        if (listas != null) {
+            for (ListaReproducao l : listas) {
+                modelListas.addRow(new Object[]{l.getNomeLista()});
+            }
+        }
+        modelVideos.setRowCount(0);
+    }
+ 
+    private void carregarVideosDaLista() {
+        int idx = tblListas.getSelectedRow();
+        if (idx < 0 || listas == null || idx >= listas.size()) return;
+        videosLista = c.carregarVideosLista(listas.get(idx).getIdLista());
+        modelVideos.setRowCount(0);
+        if (videosLista != null) {
+            for (Video v : videosLista) {
+                String detalhe;
+                if (v instanceof Filme) detalhe = ((Filme) v).getDuracao() + " min";
+                else if (v instanceof Serie) detalhe = ((Serie) v).getTemporadas() + " temporadas";
+                else detalhe = "-";
+                modelVideos.addRow(new Object[]{v.getTitulo(), v.getTipo(), v.getAnoLancamento(), detalhe});
+            }
+        }
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,8 +154,10 @@ public class ListasReproducao extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblVideos);
 
         btnRemoverVideo.setText("Remover Video");
+        btnRemoverVideo.addActionListener(this::btnRemoverVideoActionPerformed);
 
         btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,27 +208,56 @@ public class ListasReproducao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        int idx = tblListas.getSelectedRow();
+        if (idx < 0 || listas == null || idx >= listas.size()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione uma lista.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        c.excluirLista(listas.get(idx).getIdLista());
+        carregarListas();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
-        // TODO add your handling code here:
+        String nome = javax.swing.JOptionPane.showInputDialog(this, "Nome da nova lista:", "Criar Lista", javax.swing.JOptionPane.PLAIN_MESSAGE);
+        if (nome == null) return;
+        c.criarLista(nome);
+        carregarListas();
     }//GEN-LAST:event_btnCriarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        int idx = tblListas.getSelectedRow();
+        if (idx < 0 || listas == null || idx >= listas.size()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione uma lista.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String novoNome = (String) javax.swing.JOptionPane.showInputDialog(this,
+            "Novo nome:", "Editar Lista",
+            javax.swing.JOptionPane.PLAIN_MESSAGE, null, null, listas.get(idx).getNomeLista());
+        if (novoNome == null) return;
+        c.editarLista(listas.get(idx).getIdLista(), novoNome);
+        carregarListas();
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnRemoverVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverVideoActionPerformed
+        int idxLista = tblListas.getSelectedRow();
+        int idxVideo = tblVideos.getSelectedRow();
+        if (idxLista < 0 || idxVideo < 0 || videosLista == null || idxVideo >= videosLista.size()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione uma lista e um video.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        c.removerVideoLista(listas.get(idxLista).getIdLista(), videosLista.get(idxVideo).getIdVideo());
+        carregarVideosDaLista();
+    }//GEN-LAST:event_btnRemoverVideoActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
+       try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -170,9 +267,6 @@ public class ListasReproducao extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ListasReproducao().setVisible(true));
     }
 

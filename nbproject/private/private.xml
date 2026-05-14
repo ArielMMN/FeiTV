@@ -13,6 +13,10 @@
             <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Usuario.java</file>
             <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Busca.java</file>
             <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/ListasReproducao.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleBusca.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleDetalhesVideo.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleFavoritos.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleListasReproducao.java</file>
         </group>
     </open-files>
 </project-private>
