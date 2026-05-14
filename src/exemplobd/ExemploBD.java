@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package exemplobd;
 
-/**
- *
- * @author ariel
- */
+import view.Login;
+
 public class ExemploBD {
+
+    public static void main(String[] args) {
+        Login l = new Login();
+        l.setVisible(true);
+    }
     
 }

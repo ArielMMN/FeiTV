@@ -1,6 +1,3 @@
-/*
- * DAO para gerenciar favoritos de usuários
- */
 package dao;
 
 import java.sql.*;
@@ -30,6 +27,17 @@ public class FavoritoDAO {
             stmt.setInt(1, usuarioId);
             stmt.setInt(2, videoId);
             stmt.executeUpdate();
+        }
+    }
+
+    public boolean jaFavoritou(int usuarioId, int videoId) throws SQLException {
+        String sql = "SELECT 1 FROM favorito WHERE usuario_id = ? AND video_id = ?";
+        try (Connection conn = conexao.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, usuarioId);
+            stmt.setInt(2, videoId);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
         }
     }
 

@@ -17,6 +17,16 @@
             <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleDetalhesVideo.java</file>
             <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleFavoritos.java</file>
             <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleListasReproducao.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/ListaReproducaoDAO.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/CurtidaDAO.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/Conexao.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/FavoritoDAO.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/VideoDAO.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Video.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Filme.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/ListaReproducao.java</file>
+            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/exemplobd/ExemploBD.java</file>
         </group>
     </open-files>
 </project-private>
