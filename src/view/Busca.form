@@ -147,6 +147,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ver Detalhes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetalhesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblStatusBusca">
     </Component>

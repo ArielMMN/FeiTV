@@ -99,6 +99,7 @@ public class Busca extends javax.swing.JFrame {
         btnBuscarVideo.addActionListener(this::btnBuscarVideoActionPerformed);
 
         btnDetalhes.setText("Ver Detalhes");
+        btnDetalhes.addActionListener(this::btnDetalhesActionPerformed);
 
         btnVoltarPrincipal.setText("Voltar");
         btnVoltarPrincipal.addActionListener(this::btnVoltarPrincipalActionPerformed);
@@ -197,6 +198,11 @@ public class Busca extends javax.swing.JFrame {
         }
         lblStatusBusca.setText(resultados.size() + " resultado(s).");
     }//GEN-LAST:event_btnBuscarVideoActionPerformed
+
+    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
+        int indiceSelecionado = jTable3.getSelectedRow();
+        c.abrirDetalhes(indiceSelecionado, resultados);
+    }//GEN-LAST:event_btnDetalhesActionPerformed
 
     /**
      * @param args the command line arguments

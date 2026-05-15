@@ -11,6 +11,7 @@ import model.Serie;
 import model.Usuario;
 import model.Video;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -107,12 +108,16 @@ public class DetalhesVideo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtDescricao);
 
         btnCurtir.setText("Curtir");
+        btnCurtir.addActionListener(this::btnCurtirActionPerformed);
 
         btnFavorito.setText("Favoritar");
+        btnFavorito.addActionListener(this::btnFavoritoActionPerformed);
 
         btnAdicionarLista.setText("Add na Lista");
+        btnAdicionarLista.addActionListener(this::btnAdicionarListaActionPerformed);
 
         btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +182,42 @@ public class DetalhesVideo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurtirActionPerformed
+        if (c.isCurtido()) {
+        c.descurtir();
+        btnCurtir.setText("Curtir");
+    } else {
+        c.curtir();
+        btnCurtir.setText("Descurtir");
+    }
+    lblCurtidas.setText("Curtidas: " + c.contarCurtidas());
+    }//GEN-LAST:event_btnCurtirActionPerformed
+
+    private void btnFavoritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavoritoActionPerformed
+      c.adicionarFavorito();
+    }//GEN-LAST:event_btnFavoritoActionPerformed
+
+    private void btnAdicionarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarListaActionPerformed
+        List<ListaReproducao> listas = c.listarListas();
+    if (listas == null || listas.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Voce nao tem listas criadas.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    String[] nomes = listas.stream().map(ListaReproducao::getNomeLista).toArray(String[]::new);
+    String escolha = (String) JOptionPane.showInputDialog(this, "Escolha uma lista:", "Adicionar a lista",
+            JOptionPane.PLAIN_MESSAGE, null, nomes, nomes[0]);
+    if (escolha != null) {
+        int idLista = listas.stream()
+                .filter(l -> l.getNomeLista().equals(escolha))
+                .findFirst().get().getIdLista();
+        c.adicionarNaLista(idLista);
+    }
+    }//GEN-LAST:event_btnAdicionarListaActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
