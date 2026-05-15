@@ -3,33 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Principal.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/DetalhesVideo.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleLogin.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Login.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Logado.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Favoritos.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Exclusao.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Usuario.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/Busca.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/view/ListasReproducao.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleBusca.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleDetalhesVideo.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleFavoritos.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/controller/ControleListasReproducao.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/ListaReproducaoDAO.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/CurtidaDAO.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/Conexao.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/FavoritoDAO.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/dao/VideoDAO.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Video.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Filme.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/ListaReproducao.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/exemplobd/ExemploBD.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Situacao.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/src/model/Serie.java</file>
-            <file>file:/C:/Users/ariel/OneDrive/Documentos/FeiTV/README.md</file>
+            <file>file:/C:/Users/Unifanogueira/Downloads/FeiTV/src/view/Login.java</file>
+            <file>file:/C:/Users/Unifanogueira/Downloads/FeiTV/src/dao/Conexao.java</file>
+            <file>file:/C:/Users/Unifanogueira/Downloads/FeiTV/src/view/Principal.java</file>
+            <file>file:/C:/Users/Unifanogueira/Downloads/FeiTV/src/view/ListasReproducao.java</file>
+            <file>file:/C:/Users/Unifanogueira/Downloads/FeiTV/src/view/Cadastro.java</file>
         </group>
     </open-files>
 </project-private>
